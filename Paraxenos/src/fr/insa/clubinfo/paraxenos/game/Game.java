@@ -17,6 +17,7 @@ import android.view.View.OnTouchListener;
 
 import com.fbessou.sofa.GameIOHelper;
 
+import fr.insa.clubinfo.paraxenos.game.state.StateMenu;
 import fr.insa.clubinfo.paraxenos.ui.GameActivity;
 
 public class Game implements Runnable, OnTouchListener {
@@ -46,7 +47,8 @@ public class Game implements Runnable, OnTouchListener {
 	
 	@Override
 	public void run() {
-		//pushState(new StateMenu(this));
+		pushState(new StateMenu(this));
+		
 		long t = SystemClock.elapsedRealtime();
 		while(isRunning) {
 			if(onPause) {

@@ -1,5 +1,6 @@
 <resources>
 
     <string name="app_name">Paraxenos</string>
+    <string name="app_game_pad_name">Paraxenos - Gamepad</string>
 
 </resources>
