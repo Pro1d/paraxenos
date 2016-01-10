@@ -11,7 +11,7 @@ abstract public class GameState {
 	}
 	
 	abstract public void enter();
-	abstract public void update(Canvas canvas);
+	abstract public void update(Canvas canvas, int frameDelay);
 	abstract public void onActivityPaused();
 	abstract public void onActivityResumed();
 	abstract public void leave();

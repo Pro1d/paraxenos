@@ -21,6 +21,9 @@ import fr.insa.clubinfo.paraxenos.game.state.StateMenu;
 import fr.insa.clubinfo.paraxenos.ui.GameActivity;
 
 public class Game implements Runnable, OnTouchListener {
+	
+	private static final int FRAME_DELAY = 30; 
+	
 	private SurfaceHolder surfaceHolder;
 	private GameIOHelper easyIO;
 	
@@ -76,9 +79,9 @@ public class Game implements Runnable, OnTouchListener {
 
 			update();
 			t = SystemClock.elapsedRealtime() - t;
-			if(t < 30)
+			if(t < FRAME_DELAY)
 				try {
-					Thread.sleep(30-t);
+					Thread.sleep(FRAME_DELAY-t);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -93,7 +96,7 @@ public class Game implements Runnable, OnTouchListener {
 		// sound.update();
 		Canvas canvas = surfaceHolder.lockCanvas();
 		
-		currentState.update(canvas);
+		currentState.update(canvas, FRAME_DELAY);
 		
 		if(canvas != null)
 			surfaceHolder.unlockCanvasAndPost(canvas);

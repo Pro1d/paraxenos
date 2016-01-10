@@ -18,7 +18,7 @@ public class StateGame extends GameState {
 	}
 
 	@Override
-	public void update(Canvas canvas) {
+	public void update(Canvas canvas, int frameDelay) {
 		// TODO Auto-generated method stub
 
 	}
