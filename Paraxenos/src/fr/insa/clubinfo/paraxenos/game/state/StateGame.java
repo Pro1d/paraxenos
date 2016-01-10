@@ -4,16 +4,17 @@ import android.graphics.Canvas;
 import fr.insa.clubinfo.paraxenos.game.Game;
 import fr.insa.clubinfo.paraxenos.game.GameState;
 
-public class StateMenu extends GameState {
+public class StateGame extends GameState {
 
-	public StateMenu(Game g) {
+	public StateGame(Game g) {
 		super(g);
 		
 	}
 
 	@Override
 	public void enter() {
-		game.pushState(new StateGame(game));
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
