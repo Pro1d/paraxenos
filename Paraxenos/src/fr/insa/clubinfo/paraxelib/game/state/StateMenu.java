@@ -36,7 +36,7 @@ public class StateMenu extends State {
 				if (game.getIO().isGamePadConnected(1) == false)
 					game.pushState(new StateGame(game));
 			}
-		}, 30000);
+		}, 3000);
 		createMenu();
 	}
 
