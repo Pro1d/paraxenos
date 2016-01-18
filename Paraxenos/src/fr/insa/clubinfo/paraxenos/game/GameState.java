@@ -1,18 +1,30 @@
 package fr.insa.clubinfo.paraxenos.game;
 
-
-import android.graphics.Canvas;
+import android.view.MotionEvent;
+import fr.insa.clubinfo.paraxenos.graphics.Renderer;
 
 abstract public class GameState {
 	protected Game game;
-	
+
 	public GameState(Game g) {
 		game = g;
 	}
-	
+
 	abstract public void enter();
-	abstract public void update(Canvas canvas);
+
+	abstract public void update(int frameDelay);
+
+	public void render(Renderer renderer) {
+		renderer.render();
+	}
+
 	abstract public void onActivityPaused();
+
 	abstract public void onActivityResumed();
+
 	abstract public void leave();
+
+	public void onTouch(MotionEvent event) {
+
+	}
 }
