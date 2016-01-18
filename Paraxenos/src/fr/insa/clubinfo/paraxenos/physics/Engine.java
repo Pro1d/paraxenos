@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
-import fr.insa.clubinfo.paraxenos.math.Edge;
-import fr.insa.clubinfo.paraxenos.math.Vertex;
 import fr.insa.clubinfo.paraxenos.physics.actor.MovingActor;
 import fr.insa.clubinfo.paraxenos.physics.actor.StaticActor;
 import fr.insa.clubinfo.paraxenos.physics.body.Circle;
 import fr.insa.clubinfo.paraxenos.physics.body.Polygon;
 import fr.insa.clubinfo.paraxenos.physics.body.SetOfBody;
+import fr.insa.clubinfo.paraxenos.utils.Edge;
+import fr.insa.clubinfo.paraxenos.utils.Vertex;
 
 public class Engine {
 

@@ -1,9 +1,9 @@
 package fr.insa.clubinfo.paraxenos.physics;
 
-import fr.insa.clubinfo.paraxenos.math.Edge;
-import fr.insa.clubinfo.paraxenos.math.Vector;
-import fr.insa.clubinfo.paraxenos.math.Vertex;
 import fr.insa.clubinfo.paraxenos.physics.body.Circle;
+import fr.insa.clubinfo.paraxenos.utils.Edge;
+import fr.insa.clubinfo.paraxenos.utils.Vector;
+import fr.insa.clubinfo.paraxenos.utils.Vertex;
 
 public class Collision {
 	public static boolean staticCircleCircle(Circle a, Vector posA, Circle b,

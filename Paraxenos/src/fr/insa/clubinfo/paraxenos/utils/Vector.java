@@ -1,4 +1,4 @@
-package fr.insa.clubinfo.paraxenos.math;
+package fr.insa.clubinfo.paraxenos.utils;
 
 public class Vector {
 	public double x, y;

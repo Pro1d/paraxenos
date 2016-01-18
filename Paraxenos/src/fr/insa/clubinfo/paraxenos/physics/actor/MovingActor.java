@@ -1,8 +1,8 @@
 package fr.insa.clubinfo.paraxenos.physics.actor;
 
-import fr.insa.clubinfo.paraxenos.math.Vector;
 import fr.insa.clubinfo.paraxenos.physics.Actor;
 import fr.insa.clubinfo.paraxenos.physics.body.Circle;
+import fr.insa.clubinfo.paraxenos.utils.Vector;
 
 public class MovingActor extends Actor {
 	public Circle body;
