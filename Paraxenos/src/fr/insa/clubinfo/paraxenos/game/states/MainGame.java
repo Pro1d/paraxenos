@@ -1,17 +1,18 @@
-package fr.insa.clubinfo.paraxelib.game.state;
+package fr.insa.clubinfo.paraxenos.game.states;
 
 import fr.insa.clubinfo.paraxelib.game.Game;
 import fr.insa.clubinfo.paraxelib.game.State;
 import fr.insa.clubinfo.paraxelib.graphics.Renderer;
 import fr.insa.clubinfo.paraxelib.physics.Engine;
+import fr.insa.clubinfo.paraxenos.entities.Map;
 
-public class StateGame extends State {
+public class MainGame extends State {
 
 	private static final String MAP_LAYOUT = "MAP_LAYOUT";
 	private Map map;
 	private Engine physicEngine;
 	
-	public StateGame(Game g) {
+	public MainGame(Game g) {
 		super(g);
 
 	}

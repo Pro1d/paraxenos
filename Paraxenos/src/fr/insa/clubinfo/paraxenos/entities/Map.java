@@ -1,4 +1,4 @@
-package fr.insa.clubinfo.paraxelib.game.state;
+package fr.insa.clubinfo.paraxenos.entities;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -13,7 +13,7 @@ public class Map implements Drawable {
 	private Paint borderPaint;
 	private Size size;
 
-	Map(Size size) {
+	public Map(Size size) {
 		this.size = size;
 		backgroundPaint = new Paint();
 		borderPaint = new Paint();

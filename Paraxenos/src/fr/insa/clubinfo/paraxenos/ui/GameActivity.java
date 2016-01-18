@@ -12,9 +12,9 @@ import com.fbessou.sofa.GameIOHelper;
 import com.fbessou.sofa.GameInformation;
 
 import fr.insa.clubinfo.paraxelib.game.Game;
-import fr.insa.clubinfo.paraxelib.game.state.StateMenu;
 import fr.insa.clubinfo.paraxenos.ContextSetup;
 import fr.insa.clubinfo.paraxenos.R;
+import fr.insa.clubinfo.paraxenos.game.states.MainMenu;
 
 public class GameActivity extends Activity {
 	public static final int FINISH = 0;
@@ -52,7 +52,7 @@ public class GameActivity extends Activity {
 		game = new Game(surface.getHolder(), easyIO, handler, metrics);
 		surface.setOnTouchListener(game);
 		new ContextSetup().setup();
-		game.start(new StateMenu(game));
+		game.start(new MainMenu(game));
 
 	}
 

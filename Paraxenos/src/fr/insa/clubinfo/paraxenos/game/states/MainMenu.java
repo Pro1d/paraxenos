@@ -1,4 +1,4 @@
-package fr.insa.clubinfo.paraxelib.game.state;
+package fr.insa.clubinfo.paraxenos.game.states;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -16,14 +16,14 @@ import fr.insa.clubinfo.paraxelib.graphics.BasicMenu;
 import fr.insa.clubinfo.paraxelib.graphics.Renderer;
 import fr.insa.clubinfo.paraxelib.navigation.BasicMenuItem.Callback;
 
-public class StateMenu extends State {
+public class MainMenu extends State {
 
 	private static final String MENU_LAYOUT = "MENU_LAYOUT";
 	private BasicMenu menu = null;
 	private float direction = 0;
 	int delayUntilNextMove = 0;
 
-	public StateMenu(Game g) {
+	public MainMenu(Game g) {
 		super(g);
 	}
 
@@ -34,7 +34,7 @@ public class StateMenu extends State {
 			@Override
 			public void run() {
 				if (game.getIO().isGamePadConnected(1) == false)
-					game.pushState(new StateGame(game));
+					game.pushState(new MainGame(game));
 			}
 		}, 30000);
 		createMenu();
@@ -66,7 +66,7 @@ public class StateMenu extends State {
 			switch (gpEvent.event.eventType) {
 				case KEYDOWN:
 					if (gpEvent.event.padId == Sensor.KEY_CATEGORY_VALUE + 1) {
-						game.pushState(new StateGame(game));
+						game.pushState(new MainGame(game));
 					}
 					break;
 				case FLOATMOVE:
