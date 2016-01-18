@@ -29,9 +29,9 @@ public class Game implements Runnable, OnTouchListener {
 	private final Renderer renderer = new Renderer();
 	private GameIOHelper easyIO;
 
-	private GameState firstState;
-	private GameState currentState = null;
-	private Stack<GameState> states = new Stack<>();
+	private State firstState;
+	private State currentState = null;
+	private Stack<State> states = new Stack<>();
 	private HashSet<Integer> lockedGamePadId = new HashSet<>();
 
 	// related to activity
@@ -141,7 +141,7 @@ public class Game implements Runnable, OnTouchListener {
 		thread.interrupt();
 	}
 
-	public void start(GameState firstState) {
+	public void start(State firstState) {
 		if (thread == null) {
 			this.firstState = firstState;
 			thread = new Thread(this);
@@ -149,7 +149,7 @@ public class Game implements Runnable, OnTouchListener {
 		}
 	}
 
-	public void pushState(GameState newState) {
+	public void pushState(State newState) {
 		if (currentState != null) {
 			currentState.leave();
 		}

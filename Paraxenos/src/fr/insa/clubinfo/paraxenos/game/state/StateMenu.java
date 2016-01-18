@@ -11,12 +11,12 @@ import com.fbessou.sofa.GameIOHelper.GamePadInputEvent;
 import com.fbessou.sofa.sensor.Sensor;
 
 import fr.insa.clubinfo.paraxenos.game.Game;
-import fr.insa.clubinfo.paraxenos.game.GameState;
+import fr.insa.clubinfo.paraxenos.game.State;
 import fr.insa.clubinfo.paraxenos.graphics.BasicMenu;
 import fr.insa.clubinfo.paraxenos.graphics.Renderer;
 import fr.insa.clubinfo.paraxenos.navigation.BasicMenuItem.Callback;
 
-public class StateMenu extends GameState {
+public class StateMenu extends State {
 
 	private static final String MENU_LAYOUT = "MENU_LAYOUT";
 	private BasicMenu menu = null;

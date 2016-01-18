@@ -3,10 +3,10 @@ package fr.insa.clubinfo.paraxenos.game;
 import android.view.MotionEvent;
 import fr.insa.clubinfo.paraxenos.graphics.Renderer;
 
-abstract public class GameState {
+abstract public class State {
 	protected Game game;
 
-	public GameState(Game g) {
+	public State(Game g) {
 		game = g;
 	}
 

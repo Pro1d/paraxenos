@@ -1,11 +1,11 @@
 package fr.insa.clubinfo.paraxenos.game.state;
 
 import fr.insa.clubinfo.paraxenos.game.Game;
-import fr.insa.clubinfo.paraxenos.game.GameState;
+import fr.insa.clubinfo.paraxenos.game.State;
 import fr.insa.clubinfo.paraxenos.graphics.Renderer;
 import fr.insa.clubinfo.paraxenos.physics.Engine;
 
-public class StateGame extends GameState {
+public class StateGame extends State {
 
 	private static final String MAP_LAYOUT = "MAP_LAYOUT";
 	private Map map;
