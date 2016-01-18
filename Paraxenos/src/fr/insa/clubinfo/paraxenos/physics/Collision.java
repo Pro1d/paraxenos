@@ -6,17 +6,6 @@ import fr.insa.clubinfo.paraxenos.math.Vertex;
 import fr.insa.clubinfo.paraxenos.physics.body.Circle;
 
 public class Collision {
-	// public static boolean static(body * 2)
-	// public static double date({body, move} * 2)
-	// private static boolean staticCircleCircle()
-	// private static double dateCircleCircle()
-	// private static double dateCircleVertex()
-	// private static double dateCircleEdge()
-	// private static void bounceCircleCircle(velocity)
-	// private static void bounceCircleStaticCircle(velocity)
-	// private static void bounceCircleVertex(velocity)
-	// private static void bounceCircleEdge(velocity)
-
 	public static boolean staticCircleCircle(Circle a, Vector posA, Circle b,
 			Vector posB) {
 		double r = a.radius + b.radius;
@@ -50,7 +39,7 @@ public class Collision {
 
 		// déplacement forcément trop court : |pbrela| > radius + |varelb|
 		// <-> |pbrela|² > radius² + 2*radius*|varelb| + |varelb|²
-		// <-> |pbrela|² > radius² + |varelb|² // 2*radius*|varelb| > 0
+		// !!ERROR!! <-> |pbrela|² > radius² + |varelb|² // 2*radius*|varelb| > 0
 		// if(pbrela.norm2() > radius2 + norm2V)
 		// return Double.POSITIVE_INFINITY;
 
