@@ -11,10 +11,10 @@ import android.view.SurfaceView;
 import com.fbessou.sofa.GameIOHelper;
 import com.fbessou.sofa.GameInformation;
 
+import fr.insa.clubinfo.paraxelib.game.Game;
+import fr.insa.clubinfo.paraxelib.game.state.StateMenu;
 import fr.insa.clubinfo.paraxenos.ContextSetup;
 import fr.insa.clubinfo.paraxenos.R;
-import fr.insa.clubinfo.paraxenos.game.Game;
-import fr.insa.clubinfo.paraxenos.game.state.StateMenu;
 
 public class GameActivity extends Activity {
 	public static final int FINISH = 0;

@@ -1,7 +1,7 @@
 package fr.insa.clubinfo.paraxenos;
 
-import fr.insa.clubinfo.paraxenos.graphics.ColorScheme;
-import fr.insa.clubinfo.paraxenos.graphics.ColorSchemeProvider;
+import fr.insa.clubinfo.paraxelib.graphics.ColorScheme;
+import fr.insa.clubinfo.paraxelib.graphics.ColorSchemeProvider;
 
 public class ContextSetup {
 
