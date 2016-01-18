@@ -3,12 +3,14 @@ package fr.insa.clubinfo.paraxenos.game.state;
 import fr.insa.clubinfo.paraxenos.game.Game;
 import fr.insa.clubinfo.paraxenos.game.GameState;
 import fr.insa.clubinfo.paraxenos.graphics.Renderer;
+import fr.insa.clubinfo.paraxenos.physics.Engine;
 
 public class StateGame extends GameState {
 
 	private static final String MAP_LAYOUT = "MAP_LAYOUT";
 	private Map map;
-
+	private Engine physicEngine;
+	
 	public StateGame(Game g) {
 		super(g);
 
@@ -20,6 +22,7 @@ public class StateGame extends GameState {
 		Renderer renderer = game.getRenderer();
 		renderer.addLayoutTop(MAP_LAYOUT);
 		renderer.addDrawable(map, MAP_LAYOUT);
+		physicEngine = new Engine();
 	}
 
 	@Override
