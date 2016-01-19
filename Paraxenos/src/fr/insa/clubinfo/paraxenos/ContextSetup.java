@@ -1,36 +1,34 @@
 package fr.insa.clubinfo.paraxenos;
 
-import fr.insa.clubinfo.paraxelib.graphics.ColorScheme;
-import fr.insa.clubinfo.paraxelib.graphics.ColorSchemeProvider;
+import fr.insa.clubinfo.paraxelib.graphics.Theme;
+import fr.insa.clubinfo.paraxelib.graphics.ThemeProvider;
 import fr.insa.clubinfo.paraxenos.entities.MapFactory;
 import fr.insa.clubinfo.paraxenos.entities.maps.DefaultMapCreator;
 
 public class ContextSetup {
 
-	private static boolean staticFieldsInitialized = false; 
-	
+	private static boolean staticFieldsInitialized = false;
+
 	public ContextSetup() {
 
 	}
 
 	public void setup() {
-		if(!staticFieldsInitialized) {
-			createColorScheme();
+		if (!staticFieldsInitialized) {
+			createBaseTheme();
 			initializeMapFactory();
-			
+
 			staticFieldsInitialized = true;
 		}
 	}
-	
+
 	private void initializeMapFactory() {
 		MapFactory.addMapCreator("Default", new DefaultMapCreator());
 	}
 
-	private void createColorScheme() {
-		ColorScheme scheme = new ColorScheme();
-
-		ColorSchemeProvider.setColorScheme(scheme);
-		scheme.set("game_bg", "#edeae3");
-		scheme.set("game_border", "#516087");
+	private void createBaseTheme() {
+		Theme t = ThemeProvider.getBase();
+		t.setColor("game_bg", 0xff00ff00);
+		t.setColor("game_border", 0xff555555);
 	}
 }
