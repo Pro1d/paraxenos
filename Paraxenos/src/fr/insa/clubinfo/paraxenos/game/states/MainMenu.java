@@ -34,7 +34,7 @@ public class MainMenu extends State {
 			@Override
 			public void run() {
 				if (game.getIO().isGamePadConnected(1) == false)
-					game.pushState(new MainGame(game));
+					game.pushState(new Playground(game));
 			}
 		}, 3000);
 		createMenu();

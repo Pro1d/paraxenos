@@ -5,28 +5,28 @@ import fr.insa.clubinfo.paraxelib.physics.body.Circle;
 import fr.insa.clubinfo.paraxelib.utils.Vector;
 
 public class MovingActor extends Actor {
-	public Circle body;
-	public Vector velocity = new Vector(0, 0);
-	public Vector acceleration = new Vector(0, 0);
-	public Vector moving = new Vector(0, 0);
-	public double mass = 1.0;
-	public double massPerAreaUnit = 1.0;
+	private Circle body;
+	private Vector velocity = new Vector(0, 0);
+	protected Vector acceleration = new Vector(0, 0);
+	private Vector moving = new Vector(0, 0);
+	private double mass = 1.0;
+	protected double massPerAreaUnit = 1.0;
 	
 	public MovingActor(double radius) {
-		body = new Circle(radius);
-		mass = body.getMass(massPerAreaUnit);
+		setBody(new Circle(radius));
+		setMass(getBody().getMass(massPerAreaUnit));
 	}
 	
 	public void setRadius(double radius) {
 		// update the mass with the last mass per area unit
-		body.radius = radius;
-		this.mass = body.getMass(massPerAreaUnit);
+		getBody().setRadius(radius);
+		this.setMass(getBody().getMass(massPerAreaUnit));
 	}
 	
 	public void setMass(double mass) {
 		// update the mass per area distance unit with the last mass
 		this.mass = mass;
-		massPerAreaUnit = body.getMassPerAreaUnit(mass);
+		massPerAreaUnit = getBody().getMassPerAreaUnit(mass);
 	}
 	
 	public void clearAcceleration() {
@@ -37,14 +37,38 @@ public class MovingActor extends Actor {
 	}
 	
 	public void updateMovingVector(double time) {
-		moving.set(velocity).mul(time);
+		getMoving().set(getVelocity()).mul(time);
 	}
 	
 	public void addAccelerationToVelocity(double time) {
-		velocity.add(acceleration.x*time, acceleration.y*time);
+		getVelocity().add(acceleration.x*time, acceleration.y*time);
 	}
 
 	public void move(double dt) {
-		position.add(moving.x*dt, moving.y*dt);
+		getPosition().add(getMoving().x*dt, getMoving().y*dt);
+	}
+
+	public Circle getBody() {
+		return body;
+	}
+
+	public void setBody(Circle body) {
+		this.body = body;
+	}
+
+	public Vector getMoving() {
+		return moving;
+	}
+
+	public Vector getVelocity() {
+		return velocity;
+	}
+
+	public void setVelocity(double vx, double vy) {
+		this.velocity.set(vx, vy);
+	}
+
+	public double getMass() {
+		return mass;
 	}
 }

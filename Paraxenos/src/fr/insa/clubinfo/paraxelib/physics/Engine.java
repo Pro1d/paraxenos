@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Stack;
 
+import android.os.SystemClock;
+import android.util.Log;
 import fr.insa.clubinfo.paraxelib.physics.actor.MovingActor;
 import fr.insa.clubinfo.paraxelib.physics.actor.StaticActor;
 import fr.insa.clubinfo.paraxelib.physics.body.Circle;
@@ -80,6 +82,7 @@ public class Engine {
 		double elapsedTime = 0.0;/* from 0.0 to 1.0 */
 
 		while (elapsedTime < 1.0) {
+			long t = SystemClock.currentThreadTimeMillis();
 			collisionDetails.reset();
 
 			// FIXME do it only for the actors being collided ? or maybe not ? I
@@ -113,6 +116,8 @@ public class Engine {
 				// Max time reached
 				elapsedTime = 1.0;
 			}
+			t = SystemClock.currentThreadTimeMillis()-t;
+			Log.i("###", ""+t+" ms");
 		}
 	}
 
@@ -141,22 +146,23 @@ public class Engine {
 		ArrayList<StaticActor> staticActors = this.staticActors;
 
 		MovingActor actor = movingActors.get(movingActorIndex);
+		
 		int actorCount = movingActors.size();
 		for (int actorIndex2 = movingActorIndex + 1; actorIndex2 < actorCount; actorIndex2++) {
 			MovingActor actor2 = movingActors.get(actorIndex2);
 			if (actor2 == null)
 				continue;
 
-			if (Collision.staticCircleCircle(actor.body, actor.position,
-					actor2.body, actor2.position)) {
+			if (Collision.staticCircleCircle(actor.getBody(), actor.getPosition(),
+					actor2.getBody(), actor2.getPosition())) {
 				// Two actors are already in collision -> no dynamic collision
 				continue;
 			}
-			double timeBeforeCollision = Collision.dateCircleCircle(actor.body,
-					actor2.body, Collision.getTmpRelativePositionBA(
-							actor.position, actor2.position), Collision
-							.getTmpRelativeVelocityAB(actor.moving,
-									actor2.moving));
+			double timeBeforeCollision = Collision.dateCircleCircle(actor.getBody(),
+					actor2.getBody(), Collision.getTmpRelativePositionBA(
+							actor.getPosition(), actor2.getPosition()), Collision
+							.getTmpRelativeVelocityAB(actor.getMoving(),
+									actor2.getMoving()));
 			detailsOut.updateIfEarlier(timeBeforeCollision, movingActorIndex,
 					actorIndex2);
 		}
@@ -168,7 +174,7 @@ public class Engine {
 				continue;
 
 			Stack<Body> bodiesStack = Engine.bodiesStack;
-			bodiesStack.push(actor2.body);
+			bodiesStack.push(actor2.getBody());
 
 			while (!bodiesStack.empty()) {
 				Body b = bodiesStack.pop();
@@ -196,17 +202,17 @@ public class Engine {
 					for (int i = p.getEdgeCount(); --i >= 0;) {
 						Edge e = p.getEdge(i);
 						double timeBeforeCollision = Collision.dateCircleEdge(
-								actor.body, actor.position, actor.moving, e);
+								actor.getBody(), actor.getPosition(), actor.getMoving(), e);
 						detailsOut.updateIfEarlier(timeBeforeCollision,
 								movingActorIndex, actorIndex2, e);
 					}
 					for (int i = p.getVertexCount(); --i >= 0;) {
 						Vertex v = p.getVertex(i);
 						double timeBeforeCollision = Collision
-								.dateCircleVertex(actor.body, v, Collision
+								.dateCircleVertex(actor.getBody(), v, Collision
 										.getTmpRelativePositionBA(
-												actor.position, v.position),
-										actor.moving);
+												actor.getPosition(), v.position),
+										actor.getMoving());
 						detailsOut.updateIfEarlier(timeBeforeCollision,
 								movingActorIndex, actorIndex2, v);
 					}
@@ -223,10 +229,10 @@ public class Engine {
 		if (collision.targetActorIsMoving) {
 			MovingActor actor1 = movingActors.get(collision.movingActorIndex);
 			MovingActor actor2 = movingActors.get(collision.targetActorIndex);
-			Collision.collideCircleCircle(actor1.mass, actor2.mass,
-					actor1.velocity, actor2.velocity, Collision
-							.getTmpRelativePositionBA(actor1.position,
-									actor2.position));
+			Collision.collideCircleCircle(actor1.getMass(), actor2.getMass(),
+					actor1.getVelocity(), actor2.getVelocity(), Collision
+							.getTmpRelativePositionBA(actor1.getPosition(),
+									actor2.getPosition()));
 		} else {
 			MovingActor actor1 = movingActors.get(collision.movingActorIndex);
 			// USELESS? StaticActor actor2 =
@@ -238,12 +244,12 @@ public class Engine {
 				// collision.staticTarget.circle.position));
 				break;
 			case EDGE:
-				Collision.collideCircleStaticEdge(actor1.velocity,
+				Collision.collideCircleStaticEdge(actor1.getVelocity(),
 						collision.staticTarget.edge);
 				break;
 			case VERTEX:
-				Collision.collideCircleStaticPoint(actor1.velocity, Collision
-						.getTmpRelativePositionBA(actor1.position,
+				Collision.collideCircleStaticPoint(actor1.getVelocity(), Collision
+						.getTmpRelativePositionBA(actor1.getPosition(),
 								collision.staticTarget.vertex.position));
 				break;
 			}
@@ -299,6 +305,7 @@ public class Engine {
 				this.targetActorIndex = targetMovingActorIndex;
 				targetActorIsMoving = true;
 				collisionOccurs = true;
+				timeBeforeCollision = time;
 			}
 		}
 
@@ -310,6 +317,7 @@ public class Engine {
 				targetActorIsMoving = false;
 				staticTarget.set(c);
 				collisionOccurs = true;
+				timeBeforeCollision = time;
 			}
 		}
 
@@ -321,6 +329,7 @@ public class Engine {
 				targetActorIsMoving = false;
 				staticTarget.set(v);
 				collisionOccurs = true;
+				timeBeforeCollision = time;
 			}
 		}
 
@@ -332,6 +341,7 @@ public class Engine {
 				targetActorIsMoving = false;
 				staticTarget.set(e);
 				collisionOccurs = true;
+				timeBeforeCollision = time;
 			}
 		}
 
