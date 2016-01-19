@@ -11,10 +11,10 @@ public class Theme {
 	private String name;
 	private Theme parent;
 	private Map<String, Integer> colors = new HashMap<>();
-	private static Theme baseTheme = new Theme("DEFAULT", null);
+	private static Theme baseTheme;
 
-	Theme(String name, Theme parent) {
-		if (baseTheme == null && parent == null) {
+	public Theme(String name, Theme parent) {
+		if (baseTheme != null && parent == null) {
 			throw new RuntimeException("A Theme must have a parent Theme. Use theme ThemeProvider.getBaseTheme to get the base instance");
 		}
 		this.name = name;
@@ -27,6 +27,10 @@ public class Theme {
 
 	public String getName() {
 		return name;
+	}
+
+	public void setColor(String path, int color) {
+		colors.put(path, color);
 	}
 
 	public int getColor(String path) {
@@ -46,7 +50,4 @@ public class Theme {
 		return color;
 	}
 
-	protected static Theme getBaseTheme() {
-		return baseTheme;
-	}
 }
