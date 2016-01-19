@@ -59,4 +59,8 @@ public class Renderer {
 	public void addDrawable(Drawable drawable, String layoutName) {
 		layoutNames.get(layoutName).addDrawable(drawable);
 	}
+
+	public void setRenderLayoutWidth(String name, float width) {
+		layoutNames.get(name).setWidth(width);
+	}
 }
