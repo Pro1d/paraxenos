@@ -8,7 +8,7 @@ import fr.insa.clubinfo.paraxelib.utils.Vertex;
 public class Collision {
 	public static boolean staticCircleCircle(Circle a, Vector posA, Circle b,
 			Vector posB) {
-		double r = a.radius + b.radius;
+		double r = a.getRadius() + b.getRadius();
 		double dx = posA.x - posB.x;
 		double dy = posA.y - posB.y;
 
@@ -33,7 +33,7 @@ public class Collision {
 		if (dot <= 0) // No relative moving or wrong direction
 			return Double.POSITIVE_INFINITY;
 
-		double radius = a.radius + b.radius;
+		double radius = a.getRadius() + b.getRadius();
 		double norm2V = velArelB.norm2();
 		double radius2 = radius * radius;
 
@@ -62,7 +62,7 @@ public class Collision {
 			return Double.POSITIVE_INFINITY;
 
 		double norm2V = velArelB.norm2();
-		double radius2 = a.radius * a.radius;
+		double radius2 = a.getRadius() * a.getRadius();
 
 		// déplacement forcément trop court : |pbrela| > radius + |varelb|
 		// <-> |pbrela|² > radius² + 2*radius*|varelb| + |varelb|²
@@ -95,8 +95,8 @@ public class Collision {
 		if (VcrossAB <= 0) // No moving or wrong direction
 			return Double.POSITIVE_INFINITY;
 
-		AC.set(posA.x - (b.vertexStart.x + b.normal.x * a.radius), posA.y
-				- (b.vertexStart.y + b.normal.y * a.radius));
+		AC.set(posA.x - (b.vertexStart.x + b.normal.x * a.getRadius()), posA.y
+				- (b.vertexStart.y + b.normal.y * a.getRadius()));
 		// TODO test de précision avec B à la place de A
 
 		if (b.tangent.cross(AC) < 0) // From the wrong side of the edge
@@ -107,8 +107,8 @@ public class Collision {
 		if (b.tangent.cross(ACv) > 0) // edge not reached
 			return Double.POSITIVE_INFINITY;
 
-		BC.set(posA.x - (b.vertexEnd.x + b.normal.x * a.radius), posA.y
-				- (b.vertexEnd.y + b.normal.y * a.radius));
+		BC.set(posA.x - (b.vertexEnd.x + b.normal.x * a.getRadius()), posA.y
+				- (b.vertexEnd.y + b.normal.y * a.getRadius()));
 
 		if (velA.cross(AC) * velA.cross(BC) > 0) // Limit to the segment (not a
 													// straight line)
