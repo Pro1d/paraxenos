@@ -42,7 +42,6 @@ public class BasicMenu extends Menu implements Drawable {
 		titlePaint = TextPaintFactory.createTextPaint(1);
 		titlePaint.setColor(Color.BLUE);
 		titlePaint.setTextAlign(Align.CENTER);
-
 		bgPaint = new Paint();
 		bgPaint.setColor(Color.BLACK);
 	}
