@@ -4,5 +4,13 @@ import fr.insa.clubinfo.paraxelib.physics.Actor;
 import fr.insa.clubinfo.paraxelib.physics.Body;
 
 public class StaticActor extends Actor {
-	public Body body;
+	private Body body;
+
+	public Body getBody() {
+		return body;
+	}
+
+	public void setBody(Body body) {
+		this.body = body;
+	}
 }

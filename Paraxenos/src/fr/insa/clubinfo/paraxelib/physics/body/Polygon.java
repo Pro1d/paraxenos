@@ -16,6 +16,12 @@ public class Polygon extends Body {
 		super(Type.POLYGON);
 	}
 
+	/**
+	 * The points can be either in clockwise order to set the inner face as plain or
+	 * in counter clockwise order to set the inner face as empty.
+	 * @param points
+	 * @param loop
+	 */
 	public void addPath(double[] points, boolean loop) {
 		if (points == null || points.length < 2)
 			return;
