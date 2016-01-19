@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 class RenderLayout {
 
 	private Set<Drawable> drawables = new HashSet<Drawable>();
+	private float width = 1;
 
 	public void addDrawable(Drawable drawable) {
 		drawables.add(drawable);
@@ -22,9 +23,15 @@ class RenderLayout {
 	}
 
 	public void render(Canvas canvas) {
+		int count = canvas.save();
+		canvas.scale(width, width);
 		for (Drawable drawable : drawables) {
 			drawable.draw(canvas);
 		}
+		canvas.restoreToCount(count);
 	}
 
+	public void setWidth(float width) {
+		this.width = width;
+	}
 }

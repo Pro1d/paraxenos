@@ -10,8 +10,8 @@ import android.graphics.Paint.Align;
 import android.graphics.Typeface;
 import android.text.TextPaint;
 import fr.insa.clubinfo.paraxelib.navigation.BasicMenuItem;
-import fr.insa.clubinfo.paraxelib.navigation.Menu;
 import fr.insa.clubinfo.paraxelib.navigation.BasicMenuItem.Callback;
+import fr.insa.clubinfo.paraxelib.navigation.Menu;
 import fr.insa.clubinfo.paraxelib.utils.Size;
 
 public class BasicMenu extends Menu implements Drawable {
@@ -19,7 +19,7 @@ public class BasicMenu extends Menu implements Drawable {
 	private TextPaint titlePaint;
 	private Size size;
 	private float textSize;
-	private float titleRatio;
+	private float titleRatio = 1.5f;
 
 	private float marginY;
 	private float heightTitle;
@@ -39,7 +39,7 @@ public class BasicMenu extends Menu implements Drawable {
 		this.colorBase = Color.RED;
 		this.colorHighlight = Color.CYAN;
 
-		titlePaint = TextPaintFactory.createTextPaint(textSize * 1.5f);
+		titlePaint = TextPaintFactory.createTextPaint(1);
 		titlePaint.setColor(Color.BLUE);
 		titlePaint.setTextAlign(Align.CENTER);
 
@@ -81,15 +81,17 @@ public class BasicMenu extends Menu implements Drawable {
 			it.setTextSize(textSize);
 		}
 
-		heightTitle = 1.7f * textSize;
+		heightTitle = (titleRatio + 0.2f) * textSize;
 		heightItems = textSize * basicItems.size();
 		marginY = (size.getHeight() - (heightItems + heightTitle)) / 2;
 		textX = size.getWidth() / 2;
-
+		titlePaint.setTextSize(textSize * titleRatio);
 	}
 
 	public void setTitleRatio(float ratio) {
 		titleRatio = ratio;
+
+		recalculateMetrics();
 	}
 
 	public void setTitleFont(Typeface typeface) {
