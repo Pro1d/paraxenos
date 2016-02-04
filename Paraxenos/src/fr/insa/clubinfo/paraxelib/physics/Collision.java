@@ -79,9 +79,9 @@ public class Collision {
 		double dvrel = (dot - Math.sqrt(underroot));
 		double k = dvrel / norm2V;
 
-		Vector posArelBAfterMoving = velArelB.mul(k).sub(posBrelA);
-		if (!b.directionInCollisionRange(posArelBAfterMoving))
-			return Double.POSITIVE_INFINITY;
+		Vector posArelBAfterMoving = posBrelA.mul(-1).add(velArelB.x*k, velArelB.y*k);
+		//if (!b.directionInCollisionRange(posArelBAfterMoving))
+		//	return Double.POSITIVE_INFINITY;
 
 		return k;
 	}

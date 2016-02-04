@@ -46,7 +46,7 @@ public class Polygon extends Body {
 				int j = (i + 1) % path.length;
 				double cross = path[i].tangent.cross(path[j].tangent);
 				double dot = path[i].tangent.dot(path[j].tangent);
-				if (cross < 0 || (cross == 0 && dot < 0))
+				if (cross < 0 || (cross == 0 && dot <= 0))
 					vertex.add(new Vertex(path[i].vertexEnd, path[j].normal,
 							path[i].normal));
 			}

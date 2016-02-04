@@ -124,10 +124,10 @@ public class Engine {
 	/** Give the details of the first collision that will occur **/
 	private CollisionDetails findFirstCollision(CollisionDetails detailsOut) {
 		ArrayList<MovingActor> movingActors = this.movingActors;
-		int actorMax = movingActors.size() - 1;
+		int actorMax = movingActors.size();
 		for (int actorIndex1 = 0; actorIndex1 < actorMax; actorIndex1++) {
 			Actor actor1 = movingActors.get(actorIndex1);
-			if (actor1 == null)
+			if (actor1 == null)// || actor1.getPosition().x < 0 || actor1.getPosition().x > 1 || actor1.getPosition().y < 0 || actor1.getPosition().y > 1)
 				continue;
 
 			nearestObstacle(actorIndex1, detailsOut);
